@@ -23,7 +23,7 @@ class TescoOfferItem(scrapy.Item):
 	offerStart = Field()
 	offerEnd = Field()
 
-class SainsburysOfferItem(scrapy.Item)
+class SainsburysOfferItem(scrapy.Item):
 	productid = Field()
 	imgsrcs = Field()
 	imgsrcm = Field()
