@@ -5,35 +5,10 @@ from scrapy.spiders import Spider
 from scrapy.selector import Selector
 from offer.items import OfferItem
 
-class OfferSpider(Spider):
-    name = "offer" # Name of the spider, to be used when crawling
+class TescoOfferSpider(Spider):
+    name = "tescooffer" # Name of the spider, to be used when crawling
     allowed_domains = ["tesco.com"] # Where the spider is allowed to go
 
-#    start_urls = [
-##        "https://www.tesco.com/groceries/SpecialOffers/SpecialOfferList/default.aspx?promoType=alloffers&Nao=0",
-#		"https://www.tesco.com/groceries/SpecialOffers/SpecialOfferList/default.aspx?promoType=alloffers&Nao=100",
-#		"https://www.tesco.com/groceries/SpecialOffers/SpecialOfferList/default.aspx?promoType=alloffers&Nao=200",
-#		"https://www.tesco.com/groceries/SpecialOffers/SpecialOfferList/default.aspx?promoType=alloffers&Nao=300",
-#		"https://www.tesco.com/groceries/SpecialOffers/SpecialOfferList/default.aspx?promoType=alloffers&Nao=400",
-#		"https://www.tesco.com/groceries/SpecialOffers/SpecialOfferList/default.aspx?promoType=alloffers&Nao=500",
-#		"https://www.tesco.com/groceries/SpecialOffers/SpecialOfferList/default.aspx?promoType=alloffers&Nao=600",
-#		"https://www.tesco.com/groceries/SpecialOffers/SpecialOfferList/default.aspx?promoType=alloffers&Nao=700",
-#		"https://www.tesco.com/groceries/SpecialOffers/SpecialOfferList/default.aspx?promoType=alloffers&Nao=800",
-#		"https://www.tesco.com/groceries/SpecialOffers/SpecialOfferList/default.aspx?promoType=alloffers&Nao=900",
-#		"https://www.tesco.com/groceries/SpecialOffers/SpecialOfferList/default.aspx?promoType=alloffers&Nao=1000",
-#		"https://www.tesco.com/groceries/SpecialOffers/SpecialOfferList/default.aspx?promoType=alloffers&Nao=1100",
-#		"https://www.tesco.com/groceries/SpecialOffers/SpecialOfferList/default.aspx?promoType=alloffers&Nao=1200",
-#		"https://www.tesco.com/groceries/SpecialOffers/SpecialOfferList/default.aspx?promoType=alloffers&Nao=1300",
-#		"https://www.tesco.com/groceries/SpecialOffers/SpecialOfferList/default.aspx?promoType=alloffers&Nao=1400",
-#		"https://www.tesco.com/groceries/SpecialOffers/SpecialOfferList/default.aspx?promoType=alloffers&Nao=1500",
-#		"https://www.tesco.com/groceries/SpecialOffers/SpecialOfferList/default.aspx?promoType=alloffers&Nao=1600",
-#		"https://www.tesco.com/groceries/SpecialOffers/SpecialOfferList/default.aspx?promoType=alloffers&Nao=1700",
-#		"https://www.tesco.com/groceries/SpecialOffers/SpecialOfferList/default.aspx?promoType=alloffers&Nao=1800",
-#		"https://www.tesco.com/groceries/SpecialOffers/SpecialOfferList/default.aspx?promoType=alloffers&Nao=1900",
-#		"https://www.tesco.com/groceries/SpecialOffers/SpecialOfferList/default.aspx?promoType=alloffers&Nao=2000",
-#		"https://www.tesco.com/groceries/SpecialOffers/SpecialOfferList/default.aspx?promoType=alloffers&Nao=2100",
-#		"https://www.tesco.com/groceries/SpecialOffers/SpecialOfferList/default.aspx?promoType=alloffers&Nao=2200"
-#    ]
     start_urls = [
         'https://www.tesco.com/groceries/en-GB/promotions/alloffers?page=%d' % (n) for n in range(1,330)
     ]    
@@ -51,9 +26,9 @@ class OfferSpider(Spider):
         offertags = hxs.xpath(productlist_tag)
         ###
 
-        offers = []
+        tescooffers = []
         for offertag in offertags:
-            offer = OfferItem()
+            offer = TescoOfferItem()
             offer['productid'] = offertag.xpath(product_id_tag).extract()[0].replace("/groceries/en-GB/products/","")
             if offertag.xpath(product_imgsrc_tag).extract():
                 offer['imgsrc225'] = offertag.xpath(product_imgsrc_tag).extract()[0]
@@ -77,5 +52,5 @@ class OfferSpider(Spider):
                 offer['validitydesc'] = offertag.xpath(validity_desc_tag).extract()[0]
             else:
                 offer['validitydesc'] = ""
-            offers.append(offer)
-        return offers # To be changed later
+            tescooffers.append(offer)
+        return tescooffers # To be changed later

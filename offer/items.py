@@ -9,7 +9,7 @@ import scrapy
 from scrapy.item import Item, Field
 
 
-class OfferItem(scrapy.Item):
+class TescoOfferItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
 	productid = Field()
@@ -22,3 +22,11 @@ class OfferItem(scrapy.Item):
 	validitydesc = Field()
 	offerStart = Field()
 	offerEnd = Field()
+
+class SainsburysOfferItem(scrapy.Item)
+	productid = Field()
+	imgsrcs = Field()
+	imgsrcm = Field()
+	imgsrcl = Field()
+	productdesc = Field()
+	offerdesc = Field()
