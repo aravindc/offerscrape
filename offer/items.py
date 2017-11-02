@@ -25,8 +25,8 @@ class TescoOfferItem(scrapy.Item):
 
 class SainsburysOfferItem(scrapy.Item):
 	productid = Field()
-	imgsrcs = Field()
-	imgsrcm = Field()
+	#imgsrcs = Field()
+	#imgsrcm = Field()
 	imgsrcl = Field()
 	productdesc = Field()
 	offerdesc = Field()
