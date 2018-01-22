@@ -30,3 +30,4 @@ class SainsburysOfferItem(scrapy.Item):
 	imgsrcl = Field()
 	productdesc = Field()
 	offerdesc = Field()
+	producturl = Field()
