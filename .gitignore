@@ -97,3 +97,4 @@ ENV/
 *.json
 pytor.py
 scrapengine.py
+*.txt
