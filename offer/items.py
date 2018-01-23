@@ -32,16 +32,16 @@ class SainsburysOfferItem(scrapy.Item):
 	offerdesc = Field()
 	producturl = Field()
 
-class AsdaOfferItem(Scrapy.Item)
+class AsdaOfferItem(scrapy.Item):
     productdesc = Field()
-	imgsrcl = Field()
-	producturl = Field()
-	productprice = Field()
+    imgsrcl = Field()
+    producturl = Field()
+    productprice = Field()
 
-class MorrisonsOfferItem(Scrapy.Item)
+class MorrisonsOfferItem(scrapy.Item):
     productdesc = Field()
-	offerdesc = Field()
-	offerurl = Field()
-	imgurl = Field()
-	producturl = Field()
-	productprice = Field()
+    offerdesc = Field()
+    offerurl = Field()
+    imgurl = Field()
+    producturl = Field()
+    productprice = Field()
